@@ -1,0 +1,20 @@
+{
+  "name": "i5v18-rm",
+  "version": "1.0.0",
+  "main": "call.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mocha": "^11.1.0",
+    "rm-pricecalculation": "github:Panadero-Services/rm-pricecalculation"
+  }
+}
