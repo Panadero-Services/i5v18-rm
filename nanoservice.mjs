@@ -28,7 +28,7 @@
 import express from 'express';
 import cors from 'cors';
 //import { getOrders, createOrder, updateOrderStatus } from 'rm-pricecalculation';
-import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, colors, Order, OrderLine, orderStatus, orderLineStatus, applyDiscount }  from 'rm-sales';
+import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, Order, OrderLine, orderStatus, orderLineStatus, applyDiscount }  from 'rm-sales';
 console.log(moduleName, moduleVersion);
 
 const app = express();

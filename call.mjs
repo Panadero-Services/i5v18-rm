@@ -1,6 +1,6 @@
 // Voorbeeld gebruik:
 //import {rmPriceCalculation} from 'rm-pricecalculation';
-import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, colors, Order, OrderLine, orderStatus, orderLineStatus, applyDiscount }  from 'rm-sales';
+import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, Order, OrderLine, orderStatus, orderLineStatus, applyDiscount }  from 'rm-sales';
 
 const _order = new Order();
 console.log(_order);
