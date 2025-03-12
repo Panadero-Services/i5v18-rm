@@ -1,9 +1,9 @@
 // Voorbeeld gebruik:
 //import {rmPriceCalculation} from 'rm-pricecalculation';
-import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, colors, rmOrder, rmOrderItem, OrderStatus, OrderItemStatus  } from 'rm-pricecalculation';
+import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, colors, Order, OrderLine, orderStatus, orderLineStatus, applyDiscount }  from 'rm-sales';
 
-const _rmOrder = new rmOrder();
-console.log(_rmOrder);
+const _order = new Order();
+console.log(_order);
 
 async function f1() {
   return new Promise(resolve => {
@@ -13,7 +13,7 @@ async function f1() {
           //await callModule();
           resolve();
       } catch (err) {
-        console.log('errrrror.. pricecalculation....',err); 
+        console.log('errrrror.. rm-sales....',err); 
         process.exit(1);
       }
     }
