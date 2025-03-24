@@ -8,8 +8,15 @@
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
-
-
+/** *
+* v0.1.0 Initial Commit
+* RentMagic Class : NanoServer fro Price Calculation ProtoType
+* 
+* v0.1.1 - v0.1.3 Evaluating Test versions...  
+* v0.1.4 Refactor PriceCalculation to rm-sales
+* - replaces grossPrice with factor.z (fixed value)
+* 
+* **/
 
 /* const line = {
      id : 1,
@@ -23,11 +30,8 @@
      vat : 0.19
 }*/
 
-
-
 import express from 'express';
 import cors from 'cors';
-//import { getOrders, createOrder, updateOrderStatus } from 'rm-pricecalculation';
 import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, Order, OrderLine, orderStatus, orderLineStatus, applyDiscount }  from 'rm-sales';
 console.log(moduleName, moduleVersion);
 
@@ -84,6 +88,31 @@ app.post('/api/order/apply-discount', (req, res) => {
     console.log(line);
     res.json(line);
 });
+
+const _validateJson = (_json, _oDefault='') => {
+    let o = oDefault;
+    try {
+        let oDb = JSON.parse(_json);
+        for (const [key, value] of Object.entries(o)) {
+            if (oDb.hasOwnProperty(key)){
+                o[key] = oDb[key];
+            }
+        }
+        return(o);
+    } catch (err) {
+        console.log(err);
+        return(_oDefault);
+    }
+}
+
+
+
+
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
