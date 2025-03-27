@@ -3,8 +3,8 @@
 // *   NanoService : rm-sales.js      * * 
 // *   Location : /modules/build/rm-sales  * 
 // *   Modified L.B.   *                 *         *
-// *   Date:    12 mar 2025             *          *
-// *   Version: v0.1.4.            *        *      *
+// *   Date:    27 mar 2025             *          *
+// *   Version: v0.1.5.            *        *      *
 // ** *     *       *   *       *   *   *   *     **
 // * *  *       *     *      *   *       *  *  * * *
 
@@ -16,6 +16,8 @@
 * v0.1.4 Refactor PriceCalculation to rm-sales
 * - replaces grossPrice with factor.z (fixed value)
 * 
+* v0.1.5 Specific change call before deployment;
+* added .../api/price-calculator
 * **/
 
 /* const line = {
@@ -32,7 +34,7 @@
 
 import express from 'express';
 import cors from 'cors';
-import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, Order, OrderLine, orderStatus, orderLineStatus, applyDiscount }  from 'rm-sales';
+import { moduleName, moduleGit, moduleVersion, moduleDate, moduleAuthor, moduleTitle, Order, OrderLine, orderStatus, orderLineStatus, applyDiscount, priceCalculator }  from 'rm-sales';
 console.log(moduleName, moduleVersion);
 
 const app = express();
@@ -69,6 +71,7 @@ app.get('/api/order', async (req, res) => {
     res.json(_order.getOrder());
 });
 
+
 app.get('/api/orderstatus', async (req, res) => {
     console.log('OrderStatus',OrderStatus);
     res.json(OrderStatus);
@@ -89,6 +92,20 @@ app.post('/api/order/apply-discount', (req, res) => {
     res.json(line);
 });
 
+
+// new 
+app.post('/api/price-calculator', async (req, res) => {
+    var OrderLoad = req.body;
+    //const _order = new Order( line, discount );
+//    console.log(OrderLoad);
+
+    priceCalculator(OrderLoad); 
+    console.log(OrderLoad);
+    //applyDiscount(line, discount); 
+    res.json(OrderLoad);
+});
+
+
 const _validateJson = (_json, _oDefault='') => {
     let o = oDefault;
     try {
@@ -104,15 +121,6 @@ const _validateJson = (_json, _oDefault='') => {
         return(_oDefault);
     }
 }
-
-
-
-
-
-
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
